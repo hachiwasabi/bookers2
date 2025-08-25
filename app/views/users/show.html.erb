@@ -48,10 +48,10 @@
           </tr>
         </thead>
         <tbody>
-          <%= @books.each do |book| %>
+          <% @books.each do |book| %>
             <tr>
               <td>
-                <%= link_to edit_user_path(book.user) do %>
+                <% link_to edit_user_path(book.user) do %>
                   <%= image_tag book.user.image.url || "default_user.jpg", alt: "User Profile Image", style: "width: 50p; height: 50px; border-radius: 50%;" %>
                 <% end %>
               </td>

@@ -9,7 +9,7 @@
 	        <ul class="navbar-nav ml-auto">
 					  <% if user_signed_in? %>
 	           <li>
-	            <%= link_to root_path, class:"nav-link text-light" do %>
+	            <%= link_to new_user_session_path, class:"nav-link text-light" do %>
 	             <i class="fa-solid fa-house"></i> Home
 	            <% end %>
 	           </li>

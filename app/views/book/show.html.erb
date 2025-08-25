@@ -5,7 +5,7 @@
 
       <table class="table">
       <tr>
-        <%= image_tag @user.get_image %>
+        <td><%= image_tag @user.get_image %></td>
       </tr>
       <tr>
         <th>name:<%= @user.name %></th>
@@ -23,7 +23,7 @@
       <%= form_with model: @book, local: true do |f| %>
         <div class="form-group">
           <%= f.label :title %>
-          <%= f.text_area :title, class: "form-control" %>
+          <%= f.text_field :title, class: "form-control" %>
         </div>
         <div class="form-group">
           <%= f.label :body, "Opinion" %>
@@ -48,11 +48,11 @@
           </tr>
         </thead>
         <tbody>
-          <%= @books.each do |book| %>
+          <% @books.each do |book| %>
             <tr>
               <td>
                 <%= link_to edit_user_path(book.user) do %>
-                  <%= image_tag book.user.image.url || "default_user.jpg", alt: "User Profile Image", style: "width: 50p; height: 50px; border-radius: 50%;" %>
+                  <%= image_tag book.user.image.url || "no_image.jpg", alt: "User Profile Image", style: "width: 50p; height: 50px; border-radius: 50%;" %>
                 <% end %>
               </td>
               <td>
