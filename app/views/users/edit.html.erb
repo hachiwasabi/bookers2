@@ -21,7 +21,7 @@
   <%= f.file_field :image, placeholder: "ファイルを選択" %>
 
   <h4>Introduction</h4>
-  <%= f.text_area :introduction %><br>
+  <%= f.text_area :introduction, maxlength: 50 %><br>
 
   <%= f.submit "Update User", class: "btn btn-primary" %>
 

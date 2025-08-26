@@ -3,7 +3,8 @@ class BooksController < ApplicationController
 
     
   def index
-    @books  = @user.books
+    @book = Book.new
+    @books  = Book.all
     @user = current_user
   end
   
@@ -18,12 +19,11 @@ class BooksController < ApplicationController
   def create
     @book = current_user.books.build(book_params)
     @user = current_user
-    @books = @user.books
+    @books = Book.all
     if @book.save
       redirect_to @book, notice: "You have created book successfully"
     else 
-      @book_new = @book
-      render :new
+      render :index
     end
   end
 

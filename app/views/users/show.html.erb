@@ -1,19 +1,11 @@
-<% if @book.errors.any? %>
-  <div class="alert alert-danger">
-    <h4><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h4>
-    <ul>
-      <% @book.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<div>
+  <%= flash[:notice] %>
+</div>
 
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <%= render 'list',user: @user %>
+      <%= render 'list',user:@user, book:@book %>
     </div>
 
     <div class="col-md-8 offset-md-1">
