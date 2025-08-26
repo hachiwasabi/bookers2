@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @users = User.all
     @user = current_user
     @books = Book.all
+    @book = Book.new
   end
 
   def show
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :introduction, :image)
+    params.require(:user).permit(:name, :email, :introduction, :profile_image)
   end
   
 end
