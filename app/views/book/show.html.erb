@@ -52,7 +52,7 @@
             <tr>
               <td>
                 <%= link_to edit_user_path(book.user) do %>
-                  <%= image_tag book.user.image.url || "no_image.jpg", alt: "User Profile Image", style: "width: 50p; height: 50px; border-radius: 50%;" %>
+                  <%= image_tag book.user.image %>
                 <% end %>
               </td>
               <td>

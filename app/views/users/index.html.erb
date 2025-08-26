@@ -51,7 +51,7 @@
           <% @books.each do |book| %>
             <tr>
               <td>
-                <%= image_tag book.user.image.url || "default_user.jpg", alt: "User Profile Image", style: "width: 50p; height: 50px; border-radius: 50%;" %>
+                <%= image_tag book.user.image %>
                 <% end %>
               </td>
               <td></td>
