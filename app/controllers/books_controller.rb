@@ -3,24 +3,27 @@ class BooksController < ApplicationController
 
     
   def index
-    @books  = Book.all
-    @book = Book.new
+    @books  = @user.books
+    @user = current_user
   end
   
   def show
-    @user = User.find(params[:id])
-    @books = @user.books    
+    @book = Book.find(params[:id])
+    @user = @book.user    
+    @books = @user.books
+    @book_new = Book.new
   end
 
 
   def create
     @book = current_user.books.build(book_params)
+    @user = current_user
+    @books = @user.books
     if @book.save
       redirect_to @book, notice: "You have created book successfully"
-    else
-      @user = current_user
-      @books = @user.books
-      render "users/show"
+    else 
+      @book_new = @book
+      render :new
     end
   end
 
@@ -40,8 +43,10 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    respond_to |format|
+    respond_to do |format|
       format.html {redirect_to books_path, notice: "Book was successfully deleted."}
+    end
+
   end
 
   private

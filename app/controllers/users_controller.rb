@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @user = current_user
+    @books = Book.all
   end
 
   def show
@@ -13,10 +15,16 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to user_path(@user)
+    end
   end
 
   def update
     @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to user_path(@user)
+    end
     if @user.update(user_params)
       redirect_to @user, notice: "You have updated user successfully."
     else
